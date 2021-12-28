@@ -20,7 +20,8 @@ export async function run() {
        * Insert your Excel code here
        */
       const range = context.workbook.getSelectedRange();
-  
+      var query = context.workbook.QueryCollection
+
       // Read the range address
       range.load("address");
 
