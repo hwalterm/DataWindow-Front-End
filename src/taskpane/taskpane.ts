@@ -4,7 +4,11 @@
  */
 
 /* global console, document, Excel, Office */
+const pg = require('pg');
+const cs = 'postgres://postgres:wolfe;@localhost:5432/jauntyj';
 
+const client = new pg.Client(cs);
+client.connect();
 Office.onReady((info) => {
   if (info.host === Office.HostType.Excel) {
     document.getElementById("sideload-msg").style.display = "none";
@@ -14,19 +18,24 @@ Office.onReady((info) => {
 });
 
 export async function run() {
+
+  
   try {
     await Excel.run(async (context) => {
       /**
        * Insert your Excel code here
        */
       const range = context.workbook.getSelectedRange();
-      var query = context.workbook.QueryCollection
+      
 
       // Read the range address
       range.load("address");
 
       // Update the fill color
       range.format.fill.color = "yellow";
+
+      
+
 
 
       await context.sync();
