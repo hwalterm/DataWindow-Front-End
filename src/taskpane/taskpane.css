@@ -39,6 +39,7 @@
     -webkit-flex: 1 0 0;
     flex: 1 0 0;
     padding: 10px 20px;
+    list-style-type: none;
  }
  
  .ms-welcome__main > h2 {
@@ -52,12 +53,14 @@
  }
  
  .ms-welcome__features.ms-List .ms-ListItem {
+    list-style-type: none;
      padding-bottom: 20px;
      display: -webkit-flex;
      display: flex;
  }
  
  .ms-welcome__features.ms-List .ms-ListItem > .ms-Icon {
+    list-style-type: none;
      margin-right: 10px;
  }
  
@@ -78,3 +81,32 @@
 b {
     font-weight: bold;
 }
+.listbox-area {
+    list-style-type: none;
+    display: grid;
+    grid-gap: 2em;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 20px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    background: #eee;
+  }
+  [role="option"] {
+    position: relative;
+    display: block;
+    padding: 0 1em 0 1.5em;
+    line-height: 1.8em;
+  }
+  [role="option"][aria-selected="true"]::before {
+    position: absolute;
+    left: 0.5em;
+    content: "âœ“";
+  }
+  [role="listbox"] {
+    margin: 1em 0 0;
+    padding: 0;
+    min-height: 18em;
+    border: 1px solid #aaa;
+    background: white;
+    list-style-type: none;
+  }

@@ -13,6 +13,8 @@ Office.onReady(() => {
  * Shows a notification when the add-in command is executed.
  * @param event
  */
+
+
 function action(event: Office.AddinCommands.Event) {
   const message: Office.NotificationMessageDetails = {
     type: Office.MailboxEnums.ItemNotificationMessageType.InformationalMessage,
@@ -27,6 +29,29 @@ function action(event: Office.AddinCommands.Event) {
   // Be sure to indicate when the add-in command function is complete
   event.completed();
 }
+
+/**
+ * Writes the event source id to the document when ExecuteFunction runs.
+ * @param event {Office.AddinCommands.Event}
+ */
+
+ function writeValue(event) {
+  Office.context.document.setSelectedDataAsync(
+    "ExecuteFunction works. Button ID=" + event.source.id,
+    function (asyncResult) {
+      var error = asyncResult.error;
+      if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+        // Show error message.
+      } else {
+        // Show success message.
+      }
+    }
+  );
+
+  // Calling event.completed is required. event.completed lets the platform know that processing has completed.
+  event.completed();
+}
+
 
 function getGlobal() {
   return typeof self !== "undefined"
