@@ -61,9 +61,9 @@
                     <Description resid="Contoso.Menu.Tooltip" />
                   </Supertip>
                   <Icon>
-                    <bt:Image size="16" resid="Contoso.tpicon_16x16" />
-                    <bt:Image size="32" resid="Contoso.tpicon_32x32" />
-                    <bt:Image size="80" resid="Contoso.tpicon_80x80" />
+                    <bt:Image size="16" resid="Icon.16x16" />
+                    <bt:Image size="32" resid="Icon.32x32" />
+                    <bt:Image size="80" resid="Icon.80x80" />
                   </Icon>
                   <Items>
                     <Item id="itemShowTaskPane">
@@ -73,13 +73,13 @@
                         <Description resid="Contoso.Item1.Tooltip" />
                       </Supertip>
                       <Icon>
-                        <bt:Image size="16" resid="Contoso.tpicon_16x16" />
-                        <bt:Image size="32" resid="Contoso.tpicon_32x32" />
-                        <bt:Image size="80" resid="Contoso.tpicon_80x80" />
+                        <bt:Image size="16" resid="Icon.16x16" />
+                        <bt:Image size="32" resid="Icon.32x32" />
+                        <bt:Image size="80" resid="Icon.80x80" />
                       </Icon>
                       <Action xsi:type="ShowTaskpane">
                         <TaskpaneId>ButtonId1</TaskpaneId>
-                        <SourceLocation resid="Contoso.Taskpane.Url" />
+                        <SourceLocation resid="Taskpane.Url" />
                       </Action>
                     </Item>
                     <Item id="itemExecuteFunction">
@@ -89,9 +89,9 @@
                         <Description resid="Contoso.Item2.Tooltip" />
                       </Supertip>
                       <Icon>
-                        <bt:Image size="16" resid="Contoso.tpicon_16x16" />
-                        <bt:Image size="32" resid="Contoso.tpicon_32x32" />
-                        <bt:Image size="80" resid="Contoso.tpicon_80x80" />
+                        <bt:Image size="16" resid="Icon.16x16" />
+                        <bt:Image size="32" resid="Icon.32x32" />
+                        <bt:Image size="80" resid="Icon.80x80" />
                       </Icon>
                       <Action xsi:type="ExecuteFunction">
                         <FunctionName>writeValue</FunctionName>
@@ -120,15 +120,24 @@
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Get started with your sample add-in!" />
         <bt:String id="CommandsGroup.Label" DefaultValue="Commands Group" />
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Show Taskpane!!" />
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Connect to data source" />
         <bt:String id="Contoso.Tab1.TabLabel" DefaultValue="DataWindow" />
         <bt:String id="Contoso.Item2.Label" DefaultValue="Write value" />
+        <bt:String id="Contoso.TaskpaneButton.Label" DefaultValue="Show task pane" />
+			  <bt:String id="Contoso.WriteValueButton.Label" DefaultValue="Show task pane" />
+			  <bt:String id="Contoso.Item1.Label" DefaultValue="Show task pane" />
+			  <bt:String id="Contoso.Menu.Label" DefaultValue="Dropdown menu" />
+			  <bt:String id="Contoso.Group1Label" DefaultValue="Connection Info" />
+			  <bt:String id="Contoso.GetStarted.Title" DefaultValue="Get started with your sample add-in!" />
 
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded succesfully. Go to the HOME tab and click the 'Show Taskpane' button to get started." />
+        <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded succesfully. Go to the DataWindow tab and click the 'Show Taskpane' button to add a connection" />
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Show a Taskpane" />
         <bt:String id="Contoso.Item2.Tooltip" DefaultValue="Choose to show a task pane" />
+        <bt:String id="Contoso.TaskpaneButton.Tooltip" DefaultValue="Choose to show a task pane" />
+			  <bt:String id="Contoso.Item1.Tooltip" DefaultValue="Choose to show a task pane" />
+			  <bt:String id="Contoso.Menu.Tooltip" DefaultValue="Show the dropdown menu" />
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>

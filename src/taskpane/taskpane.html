@@ -14,7 +14,8 @@
     <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
 
     <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui#/. -->
-    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css"/>
+    <link rel="stylesheet"
+        href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css" />
 
     <!-- Template styles -->
     <link href="taskpane.css" rel="stylesheet" type="text/css" />
@@ -29,27 +30,45 @@
         <h2 class="ms-font-xl">Please sideload your add-in to see app body.</h2>
     </section>
     <main id="app-body" class="ms-welcome__main" style="display: none;">
-        form
+        <!-- form
         <p>
             Choose your favorite transuranic element (actinide or transactinide).
-          </p>
-          <div class="listbox-area">
+        </p>
+        <div class="listbox-area">
             <div>
-              <span id="ss_elem" class="listbox-label">
-                Transuranium elements:
-              </span>
-              <ul id="connection_list"
-                  tabindex="0"
-                  role="listbox"
-                  aria-labelledby="ss_elem">
-                <li id="ss_elem_Np" role="option">
-                  Neptunium
-                </li>
-                <script type="text/javascript" src="connections_list.js"></script>
-              
-              </ul>
+                <span id="ss_elem" class="listbox-label">
+                    Transuranium elements:
+                </span>
+                <ul id="connection_list" tabindex="0" role="listbox" aria-labelledby="ss_elem">
+                    <li id="ss_elem_Np" role="option">
+                        Neptunium
+                    </li>
+                    <script type="text/javascript" src="connections_list.js"></script>
+
+                </ul>
             </div>
-          </div>
+        </div> -->
+        <form action="http://localhost:8080/hello" method="get">
+            <label for="Database">Choose a database:</label>
+            <select name="Database Type" id="db type">
+                <option value="Postgres">Postgres</option>
+                <option value="Oracle">Oracle</option>
+                <option value="SQL Server">SQL Server</option>
+                <option value="MySQL">MySQL</option></select><br><br>
+            <label for="Hostname">Hostname</label>
+            <input type="text" id="hname" name="hname"><br><br>
+            <label for="Database">Database Name</label>
+            <input type="text" id="dbname" name="dbname"><br><br>
+            <label for="Username">Username</label>
+            <input type="text" id="uname" name="uname"><br><br>
+            <label for="Password">Password</label>
+            <input type="pword" id="pword" name="pword"><br><br>
+            
+            
+            
+            <input type="submit" value="Connect">
+        </form>
+
         <p class="ms-font-l">Modify the source files, then click <b>Run</b>.</p>
         <div role="button" id="run" class="ms-welcome__action ms-Button ms-Button--hero ms-font-xl">
             <span class="ms-Button-label">Run</span>

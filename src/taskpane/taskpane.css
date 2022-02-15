@@ -110,3 +110,17 @@ b {
     background: white;
     list-style-type: none;
   }
+  input[type=text] {
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding-left: 40px;
+  }
+  select {
+    background-color: #f1f1f1;
+  }
+
+  form {
+      padding:20%
+  }
