@@ -4,12 +4,21 @@ import (
 	"database/sql"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"net/http"
+	"strconv"
 )
 
-func connectToPostgres(connect systemParams) (string, *sql.DB) {
+type systemParams struct {
+	dbType   string
+	host     string
+	port     int
+	username string
+	password string
+	dbname   string
+}
+
+func connectToPostgres(connect systemParams) (string, *sql.DB, error) {
 	// var db sql.DB
 	// var err error = nil
 	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
@@ -17,42 +26,62 @@ func connectToPostgres(connect systemParams) (string, *sql.DB) {
 		connect.host, connect.port, connect.username, connect.password, connect.dbname)
 	db, err := sql.Open("postgres", psqlInfo)
 	if err != nil {
-		return err.Error(), nil
+		return err.Error(), nil, err
 	}
-	defer db.Close()
+
 	err = db.Ping()
 	if err != nil {
-		return err.Error(), nil
+		return err.Error(), nil, err
 	}
-	return "connected successfully!", db
+	return "connected successfully!", db, nil
 
 }
 
 func helloHandler(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
-	io.WriteString(w, "Hello, world!\n")
-	var connectionInfo = systemParams{
-		dbType:   "postgres",
-		host:     "localhost",
-		port:     5432,
-		username: "postgres",
-		password: "postgres",
-		dbname:   "jauntyj",
-	}
-	connectMessage, db := connectToPostgres(connectionInfo)
-	resp, err := ioutil.ReadAll(req.Body)
+
+	//resp, err := ioutil.ReadAll(req.Body)
+	// if err != nil {
+	// 	log.Printf("Error reading body: %v", err)
+	// 	http.Error(w, "can't read body", http.StatusBadRequest)
+	// 	return
+	// }
+	req.ParseForm()
+	port, err := strconv.Atoi(req.FormValue("port"))
 	if err != nil {
-		log.Printf("Error reading body: %v", err)
-		http.Error(w, "can't read body", http.StatusBadRequest)
+		log.Printf("Error port was not a number: %v", req.Form)
+		http.Error(w, "port not a number", http.StatusBadRequest)
 		return
 	}
 
-	log.Printf("formval = %v\n", req.FormValue("Database Type"))
-	log.Printf("body = %v\n", string(resp))
+	var connectionInfo = systemParams{
+		dbType:   req.FormValue("Database Type"),
+		host:     req.FormValue("hname"),
+		port:     port,
+		username: req.FormValue("uname"),
+		password: req.FormValue("pword"),
+		dbname:   req.FormValue("dbname"),
+	}
+	//log.Printf("header = %v\n", req.Header)
+	log.Printf("databasetype = %v\n", req.FormValue("Database Type"))
+	connectMessage, db, err := connectToPostgres(connectionInfo)
+	if err != nil {
+		log.Printf("Error port was not a number: %v", req.Form)
+		http.Error(w, connectMessage, http.StatusBadRequest)
+		return
+	}
 
-	db.Query("select * from dbo.car")
+	var vin string
 
-	io.WriteString(w, connectMessage)
+	err = db.QueryRow("select vin from dbo.car LIMIT 1").Scan(&vin)
+	if err != nil {
+		log.Printf("Error port was not a number: %v", req.Form)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+
+	}
+
+	io.WriteString(w, vin)
+	defer db.Close()
 
 }

@@ -7,15 +7,6 @@ import (
 	_ "github.com/lib/pq"
 )
 
-type systemParams struct {
-	dbType   string
-	host     string
-	port     int
-	username string
-	password string
-	dbname   string
-}
-
 func main() {
 	// Hello world, the web server
 	log.Println("Listening for requests at http://localhost:8080/hello")
