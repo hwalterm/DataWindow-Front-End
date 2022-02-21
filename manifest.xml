@@ -31,6 +31,31 @@
           <FunctionFile resid="Commands.Url" />
           <ExtensionPoint xsi:type="PrimaryCommandSurface">
             <CustomTab id="DataWindowTab">
+              <Group>
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16x16" />
+                  <bt:Image size="32" resid="Icon.32x32" />
+                  <bt:Image size="80" resid="Icon.80x80" />
+                </Icon>
+                <Control xsi:type="Button" id="TaskpaneButton">
+                  <Label resid="TaskpaneButton.Label" />
+                  <Supertip>
+                    <Title resid="TaskpaneButton.Label" />
+                    <Description resid="TaskpaneButton.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16" />
+                    <bt:Image size="32" resid="Icon.32x32" />
+                    <bt:Image size="80" resid="Icon.80x80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>DBAdmin Taskpane</TaskpaneId>
+                    <SourceLocation resid="DB_AdminTaskpane.Url" />
+                  </Action>
+                </Control>
+
+              </Group>
+    
               <Group id="CommandsGroup">
                 <Label resid="CommandsGroup.Label" />
                 <Icon>
@@ -39,6 +64,22 @@
                   <bt:Image size="80" resid="Icon.80x80" />
                 </Icon>
                 <Control xsi:type="Button" id="TaskpaneButton">
+                  <Label resid="TaskpaneButton.Label" />
+                  <Supertip>
+                    <Title resid="TaskpaneButton.Label" />
+                    <Description resid="TaskpaneButton.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16" />
+                    <bt:Image size="32" resid="Icon.32x32" />
+                    <bt:Image size="80" resid="Icon.80x80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>DBAdmin Taskpane</TaskpaneId>
+                    <SourceLocation resid="DB_AdminTaskpane.Url" />
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="DbAdmin">
                   <Label resid="TaskpaneButton.Label" />
                   <Supertip>
                     <Title resid="TaskpaneButton.Label" />
@@ -100,6 +141,7 @@
                   </Items>
                 </Control>
               </Group>
+           
               <Label resid="Contoso.Tab1.TabLabel" />
             </CustomTab>
           </ExtensionPoint>
@@ -116,10 +158,12 @@
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
         <bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/commands.html" />
         <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane.html" />
+        <bt:Url id="DB_AdminTaskpane.Url" DefaultValue="https://localhost:3000/DBAdmin.html" />
+
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="GetStarted.Title" DefaultValue="Get started with your sample add-in!" />
-        <bt:String id="CommandsGroup.Label" DefaultValue="Commands Group" />
+        <bt:String id="GetStarted.Title" DefaultValue="Get started with DataWindow" />
+        <bt:String id="CommandsGroup.Label" DefaultValue="Connect to a Database" />
         <bt:String id="TaskpaneButton.Label" DefaultValue="Connect to data source" />
         <bt:String id="Contoso.Tab1.TabLabel" DefaultValue="DataWindow" />
         <bt:String id="Contoso.Item2.Label" DefaultValue="Write value" />
@@ -132,7 +176,7 @@
 
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded succesfully. Go to the DataWindow tab and click the 'Show Taskpane' button to add a connection" />
+        <bt:String id="GetStarted.Description" DefaultValue="Data Window successfully added" />
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Show a Taskpane" />
         <bt:String id="Contoso.Item2.Tooltip" DefaultValue="Choose to show a task pane" />
         <bt:String id="Contoso.TaskpaneButton.Tooltip" DefaultValue="Choose to show a task pane" />

@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"strconv"
+	"strings"
 )
 
 type systemParams struct {
@@ -21,10 +22,11 @@ type systemParams struct {
 func connectToPostgres(connect systemParams) (string, *sql.DB, error) {
 	// var db sql.DB
 	// var err error = nil
+	var dbtype string = strings.ToLower(connect.dbType)
 	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
 		"password=%s dbname=%s sslmode=disable",
 		connect.host, connect.port, connect.username, connect.password, connect.dbname)
-	db, err := sql.Open("postgres", psqlInfo)
+	db, err := sql.Open(dbtype, psqlInfo)
 	if err != nil {
 		return err.Error(), nil, err
 	}

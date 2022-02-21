@@ -21,6 +21,7 @@ module.exports = async (env, options) => {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
       taskpane: "./src/taskpane/taskpane.ts",
       commands: "./src/commands/commands.ts",
+      DBAdmin: "./src/taskpane/taskpane.ts",
     },
     output: {
       devtoolModuleFilenameTemplate: "webpack:///[resource-path]?[loaders]",
@@ -89,6 +90,11 @@ module.exports = async (env, options) => {
         filename: "commands.html",
         template: "./src/commands/commands.html",
         chunks: ["polyfill", "commands"],
+      }),
+      new HtmlWebpackPlugin({
+        filename: "DBAdmin.html",
+        template: "./src/taskpane/DBAdmin.html",
+        chunks: ["polyfill", "DBAdmin"],
       }),
     ],
     devServer: {
